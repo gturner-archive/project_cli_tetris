@@ -1,8 +1,7 @@
-class Block
-  attr_accessor :x, :y
+class Block < DeadBlock
+
   def initialize(x_coord)
-    @x = x_coord
-    @y = 20
+    super(x_coord,20)
   end
 
   def coordinates
