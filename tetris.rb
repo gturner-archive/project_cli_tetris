@@ -12,7 +12,7 @@ Block class
   def rotate
   def fall
 
-
+#different class for blocks once they hit the ground
 
 Board class
   def render_grid
