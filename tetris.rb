@@ -1,23 +1,22 @@
-Tetris class
+class Tetris
+  def initialize
+    @player = Player.new
+    @board = Board.new
+  end
+
   def play
+    until lose
+      @player.get_input
+      @board.make_grid
+      @board.render_grid
+    end
+
   def lose
+# if block is in top 4 rows after landing
+  end
 
-Player class
-  def get_move
 
+end
 
-Block class
-  def move_left
-  def move_right
-  def rotate
-  def fall
 
 #different class for blocks once they hit the ground
-
-Board class
-  def render_grid
-  def make_grid
-  def validiate_move
-  def delete_row
-  def full_row?
-  def make_new_block
