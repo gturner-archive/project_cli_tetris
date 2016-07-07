@@ -24,18 +24,25 @@ class Board
     end
   end
 
+
   def dead_blocks
     #go through @block and make an array of all the dead blocks' coordinates
+    dead_arr = @blocks.select { |i| i.class == DeadBlock }
+    dead_arr.map! { |a| [a.x, a.y]}
+    end
   end
 
   def hit_bottom?
     #delete all the blocks in @blocks and replace them with dead blocks
     # hits the bottom or a dead square
-    @block.y==0 || 
+    @block.y==0 || dead_blocks.include?([@block.x, @block.y-1])
   end
 
   def kill_block
-     hit_bottom?
+    if hit_bottom?
+      @blocks.push(DeadBlock.new(@block.x, @block.y))
+      @blocks.select { |i| i.class == DeadBlock }
+    end
   end
 
   def render_grid

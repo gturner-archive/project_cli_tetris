@@ -10,8 +10,10 @@ class Block < DeadBlock
 
   def move_left
     x -= 1 if @board.validate_move(x - 1)
+  end
   def move_right
     x += 1 if @board.validate_move(x + 1)
+  end
   # def rotate
   def quick_fall
     # fall until you hit bottom
@@ -21,12 +23,3 @@ class Block < DeadBlock
   end
 
 end
-
-
-
-top section
-|**| = 20-23
-|  |
-|  | = 1-19
-|__|
-bottom row = 0
