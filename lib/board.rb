@@ -3,7 +3,7 @@
 
 class Board
   def initialize
-    @grid=Array.new(24){Array.new(10)}
+    @grid = Array.new(24){Array.new(10)}
   end
 
   def make_new_block
@@ -32,9 +32,22 @@ class Board
     end
   end
 
-  def hit_bottom?
-    # check if the blocks are at the bottom of the grid
-    
+  def 
+
+  def next_empty_space(current_column)
+    get_columns(current_column).each_with_index { |block, index| return index if block.nil? }
+  end
+
+  def get_columns(column_num)
+    @grid.map { |row| row[column_num] }
+  end
+
+  def live_blocks
+    temp_array = []
+    @grid.each_with_index do |row, row_num|
+      row.each_with_index { |piece, col_num| temp_array << [row_num, col_num]  if piece.class == LiveBlock }
+    end
+    temp_array
   end
 
   def kill_block
