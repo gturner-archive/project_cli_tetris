@@ -3,13 +3,11 @@
 
 class Board
   def initialize
-    @blocks=[]
+    @grid=Array.new(24){Array.new(10)}
   end
 
   def make_new_block
-    @block=Block.new
-    @block.x_coord=[0..9].sample
-    @blocks << @block
+    @block = LiveBlock.new
   end
 
   def move_block(move)
@@ -25,17 +23,18 @@ class Board
   end
 
 
-  def dead_blocks
-    #go through @block and make an array of all the dead blocks' coordinates
-    dead_arr = @blocks.select { |i| i.class == DeadBlock }
-    dead_arr.map! { |a| [a.x, a.y]}
+  def change_blocks
+    # all live blocks on board are changed to blocks
+    @grid.each do |row|
+      row.map! do |space|
+        space = Block.new if space.class == LiveBlock
+      end
     end
   end
 
   def hit_bottom?
-    #delete all the blocks in @blocks and replace them with dead blocks
-    # hits the bottom or a dead square
-    @block.y==0 || dead_blocks.include?([@block.x, @block.y-1])
+    # check if the blocks are at the bottom of the grid
+    
   end
 
   def kill_block

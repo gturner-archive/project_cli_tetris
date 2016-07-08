@@ -1,4 +1,4 @@
-class Block < DeadBlock
+class LiveBlock < Block
 
   def initialize(x_coord)
     super(x_coord,20)

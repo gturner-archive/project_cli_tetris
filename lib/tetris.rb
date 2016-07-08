@@ -1,7 +1,9 @@
-require_relative "dead_block"
 require_relative "block"
+require_relative "live_block"
 require_relative "player"
 require_relative "board"
+require_relative "view"
+
 
 class Tetris
   def initialize
